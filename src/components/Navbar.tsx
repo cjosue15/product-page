@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Image, Picture } from '../styles/styled-components.styles';
+import { Image, Picture, Wrapper } from '../styles/styled-components.styles';
 
 import logo from '../assets/images/logo.svg';
 import cart from '../assets/images/icon-cart.svg';
@@ -24,12 +24,6 @@ const MenuWrapper = styled.ul`
   gap: 2.5rem;
 `;
 
-const Wrapper = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
 const ProfileWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -47,7 +41,7 @@ const Navbar = () => {
     <nav>
       <Wrapper>
         <NavbarWrapper>
-          <Picture styles={{ width: '400px' }}>
+          <Picture styles={{ width: '150px', flexShrink: 0 }}>
             <Image src={logo} alt='sneakers' />
           </Picture>
           <MenuWrapper>

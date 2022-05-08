@@ -1,9 +1,39 @@
+:root {
+  /* ### Primary */
+
+  --orange: hsl(26, 100%, 55%);
+  --pale-orange: hsl(25, 100%, 94%);
+
+  /* ### Neutral */
+
+  --very-dark-blue: hsl(220, 13%, 13%);
+  --dark-grayish-blue: hsl(219, 9%, 45%);
+  --grayish-blue: hsl(220, 14%, 75%);
+  --light-grayish-blue: hsl(223, 64%, 98%);
+  --white: hsl(0, 0%, 100%);
+  /* --Black:(with 75% opacity for lightbox background): hsl(0, 0%, 0%); */
+
+  --font-h1: 3rem;
+  --font-h5: 1rem;
+  --font-normal: 1rem;
+}
+
+html {
+  font-size: 16px;
+}
+
 body {
   margin: 0;
   font-family: 'Kumbh Sans', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1,
+h2,
+h5,
+p {
+  margin: 0;
+}
+
+main {
+    padding: 5rem 0;
 }

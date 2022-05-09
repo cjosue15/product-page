@@ -27,6 +27,12 @@ body {
   font-family: 'Kumbh Sans', sans-serif;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h5,
@@ -35,5 +41,6 @@ p {
 }
 
 main {
-    padding: 5rem 0;
+  padding: 5rem 0;
+  flex: 1;
 }

@@ -14,15 +14,20 @@ const SubTitle = styled.h5`
 `;
 
 const Title = styled.h1`
-  color: var(--black);
+  color: var(--very-dark-blue);
   font-size: var(--font-h1);
   line-height: var(--font-h1);
-  margin-top: 1.5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media only screen and (min-width: 1023px) {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const Description = styled.p`
-  color: var(--grayish-blue);
+  color: var(--very-dark-blue);
   font-size: var(--font-normal);
   line-height: 1.5rem;
 `;

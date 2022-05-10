@@ -13,7 +13,7 @@
   --white: hsl(0, 0%, 100%);
   /* --Black:(with 75% opacity for lightbox background): hsl(0, 0%, 0%); */
 
-  --font-h1: 3rem;
+  --font-h1: 2rem;
   --font-h5: 1rem;
   --font-normal: 1rem;
 }
@@ -41,6 +41,16 @@ p {
 }
 
 main {
-  padding: 5rem 0;
   flex: 1;
+  padding-bottom: 5rem;
+}
+
+@media only screen and (min-width: 1023px) {
+  :root {
+    --font-h1: 3rem;
+  }
+
+  main {
+    padding-top: 5rem;
+  }
 }

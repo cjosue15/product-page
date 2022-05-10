@@ -3,15 +3,22 @@ import styled from 'styled-components';
 
 const ProductAmmountWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   font-weight: bold;
   margin-bottom: 2rem;
+  align-items: center;
+  justify-content: space-between;
+
+  @media only screen and (min-width: 1023px) {
+    flex-direction: column;
+  }
 `;
 
 const DiscountedPrice = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
+  @media only screen and (min-width: 1023px) {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const RealPrice = styled.small`

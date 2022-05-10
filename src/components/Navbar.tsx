@@ -16,12 +16,16 @@ const NavbarWrapper = styled.div`
 `;
 
 const MenuWrapper = styled.ul`
-  display: flex;
-  align-items: center;
+  display: none;
   list-style: none;
   margin: 0;
   padding: 0;
   gap: 2.5rem;
+
+  @media only screen and (min-width: 1023px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const ProfileWrapper = styled.div`

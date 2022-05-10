@@ -27,10 +27,15 @@ export const Image = styled.img<{ styles?: Interpolation<React.CSSProperties> }>
 `;
 
 export const Wrapper = styled.div`
-  width: calc(100% - 4rem);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  width: calc(100% - 3rem);
+  padding: 0 1.5rem;
+
+  @media only screen and (min-width: 1023px) {
+    width: calc(100% - 4rem);
+    padding: 0 2rem;
+  }
 `;
 
 export const Icon = styled.i<{ styles?: Interpolation<React.CSSProperties> }>`

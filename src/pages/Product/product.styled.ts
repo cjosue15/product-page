@@ -8,9 +8,13 @@ export const ProductWrapper = styled.div`
 
 export const ProductColumns = styled.div`
   display: grid;
-  grid-template-columns: 25rem 1fr;
-  gap: 7rem;
+  gap: 4rem;
   align-items: center;
+
+  @media only screen and (min-width: 1023px) {
+    grid-template-columns: 25rem 1fr;
+    gap: 7rem;
+  }
 `;
 
 export const ProductSummary = styled.div`

@@ -12,11 +12,18 @@ const ProductViewerWrapper = styled.div``;
 
 const ProductViewerSingle = styled.div`
   position: relative;
-  margin-bottom: 1.5rem;
+
+  @media only screen and (min-width: 1023px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const ProductViewerList = styled.div<{ isModalViewer: boolean }>`
-  display: flex;
+  display: none;
+
+  @media only screen and (min-width: 1023px) {
+    display: flex;
+  }
   gap: 1.5rem;
   align-items: center;
   padding-right: ${(props) => props.isModalViewer && css`3rem`};
@@ -24,11 +31,16 @@ const ProductViewerList = styled.div<{ isModalViewer: boolean }>`
 `;
 
 const Viewer = styled.div<{ active?: boolean }>`
-  border-radius: 0.5rem;
-  overflow: hidden;
+  margin: 0 calc(-50vw + 50%);
   position: relative;
   cursor: pointer;
   border: ${(props) => props.active && css`3px solid var(--orange)`};
+
+  @media only screen and (min-width: 1023px) {
+    overflow: hidden;
+    margin: 0;
+    border-radius: 0.5rem;
+  }
 
   ${({ active }) =>
     active &&
@@ -43,7 +55,7 @@ const Viewer = styled.div<{ active?: boolean }>`
     `}
 `;
 
-const Arrow = styled.button`
+const Arrow = styled.button<{ isModalViewer: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,12 +70,28 @@ const Arrow = styled.button`
   transform: translateY(-50%);
   cursor: pointer;
 
+  ${({ isModalViewer }) =>
+    !isModalViewer &&
+    css`
+      @media only screen and (min-width: 1023px) {
+        display: none;
+      }
+    `}
+
   &.next {
-    right: calc(-2.5rem / 2);
+    right: calc(-1.5rem / 2);
+
+    @media only screen and (min-width: 1023px) {
+      right: calc(-2.5rem / 2);
+    }
   }
 
   &.previous {
-    left: calc(-2.5rem / 2);
+    left: calc(-1.5rem / 2);
+
+    @media only screen and (min-width: 1023px) {
+      right: calc(-2.5rem / 2);
+    }
   }
 
   img {
@@ -110,18 +138,20 @@ export const ProductViewer = ({
     <ProductViewerWrapper>
       <ProductViewerSingle onDoubleClick={() => handleModalViewer(true)}>
         {isModalViewer && (
-          <>
-            <Close onClick={() => handleModalViewer(false)}>
-              <Image src={close} />
-            </Close>
-            <Arrow className='previous' onClick={() => handleArrow('previous')}>
-              <Image src={previous} />
-            </Arrow>
-            <Arrow className='next' onClick={() => handleArrow('next')}>
-              <Image src={next} />
-            </Arrow>
-          </>
+          <Close onClick={() => handleModalViewer(false)}>
+            <Image src={close} />
+          </Close>
         )}
+
+        <>
+          <Arrow isModalViewer={isModalViewer} className='previous' onClick={() => handleArrow('previous')}>
+            <Image src={previous} />
+          </Arrow>
+          <Arrow isModalViewer={isModalViewer} className='next' onClick={() => handleArrow('next')}>
+            <Image src={next} />
+          </Arrow>
+        </>
+
         <Viewer>
           <Picture>
             <Image src={require(`../../assets/images/${products[activeIndex].singlePath}`)} alt='Product' />

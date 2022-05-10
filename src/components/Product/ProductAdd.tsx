@@ -11,17 +11,20 @@ import minus from '../../assets/images/icon-minus.svg';
 
 const ProductAddWrapper = styled.div`
   display: grid;
-  grid-template-columns: 10rem 1fr;
   gap: 1rem;
+
+  @media only screen and (min-width: 1023px) {
+    grid-template-columns: 10rem 1fr;
+  }
 `;
 
 const CounterWrapper = styled.div`
-  display: flex;
+  display: grid;
   align-items: center;
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 const Counter = styled.div`
-  width: 6.25rem;
   height: 100%;
   background-color: var(--light-grayish-blue);
   display: flex;

@@ -34,7 +34,7 @@ const Discount = styled.span`
   border-radius: 0.25rem;
 `;
 
-const ProductAmmount = () => {
+export const ProductAmmount = () => {
   return (
     <ProductAmmountWrapper>
       <DiscountedPrice>
@@ -45,5 +45,3 @@ const ProductAmmount = () => {
     </ProductAmmountWrapper>
   );
 };
-
-export default ProductAmmount;

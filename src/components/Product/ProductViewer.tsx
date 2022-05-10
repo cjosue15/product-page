@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 
 import next from '../../assets/images/icon-next.svg';
@@ -6,7 +6,7 @@ import previous from '../../assets/images/icon-previous.svg';
 import close from '../../assets/images/icon-close.svg';
 
 import { Image, Picture } from '../../styles/styled-components.styles';
-import { Product } from '../../models/product.model';
+import { ProductContext } from '../../context/product.context';
 
 const ProductViewerWrapper = styled.div``;
 
@@ -85,46 +85,26 @@ const Close = styled.button`
   }
 `;
 
-const ProductViewer = ({
+export const ProductViewer = ({
   handleModalViewer,
   isModalViewer,
 }: {
   handleModalViewer: (mustShow: boolean) => void;
   isModalViewer: boolean;
 }) => {
-  const [products] = useState<Product[]>([
-    {
-      id: 0,
-      thumbnailPath: 'image-product-1-thumbnail.jpg',
-      singlePath: 'image-product-1.jpg',
-      name: 'Producto 1',
-    },
-    {
-      id: 1,
-      thumbnailPath: 'image-product-2-thumbnail.jpg',
-      singlePath: 'image-product-2.jpg',
-      name: 'Producto 2',
-    },
-    {
-      id: 2,
-      thumbnailPath: 'image-product-3-thumbnail.jpg',
-      singlePath: 'image-product-3.jpg',
-      name: 'Producto 3',
-    },
-    {
-      id: 3,
-      thumbnailPath: 'image-product-4-thumbnail.jpg',
-      singlePath: 'image-product-4.jpg',
-      name: 'Producto 4',
-    },
-  ]);
+  const { activeIndex, products, setActiveIndex } = useContext(ProductContext);
 
-  const [activeProduct, setActiveProduct] = useState<Product>({
-    id: 0,
-    thumbnailPath: 'image-product-1-thumbnail.jpg',
-    singlePath: 'image-product-1.jpg',
-    name: 'Producto 1',
-  });
+  const handleArrow = (action: 'next' | 'previous') => {
+    const INDEX = action === 'next' ? activeIndex + 1 : activeIndex - 1;
+
+    if (action === 'next' && INDEX <= products.length - 1) {
+      setActiveIndex(INDEX);
+    }
+
+    if (action === 'previous' && INDEX >= 0) {
+      setActiveIndex(INDEX);
+    }
+  };
 
   return (
     <ProductViewerWrapper>
@@ -134,26 +114,26 @@ const ProductViewer = ({
             <Close onClick={() => handleModalViewer(false)}>
               <Image src={close} />
             </Close>
-            <Arrow className='previous'>
+            <Arrow className='previous' onClick={() => handleArrow('previous')}>
               <Image src={previous} />
             </Arrow>
-            <Arrow className='next'>
+            <Arrow className='next' onClick={() => handleArrow('next')}>
               <Image src={next} />
             </Arrow>
           </>
         )}
         <Viewer>
           <Picture>
-            <Image src={require(`../../assets/images/${activeProduct.singlePath}`)} alt='Product' />
+            <Image src={require(`../../assets/images/${products[activeIndex].singlePath}`)} alt='Product' />
           </Picture>
         </Viewer>
       </ProductViewerSingle>
       <ProductViewerList isModalViewer={isModalViewer}>
-        {products.map((thumbnail) => (
+        {products.map((thumbnail, index) => (
           <Viewer
             key={thumbnail.id}
-            active={thumbnail.id === activeProduct.id}
-            onClick={() => setActiveProduct(thumbnail)}
+            active={thumbnail.id === products[activeIndex].id}
+            onClick={() => setActiveIndex(index)}
           >
             <Picture>
               <Image src={require(`../../assets/images/${thumbnail.thumbnailPath}`)} alt={thumbnail.name} />
@@ -164,5 +144,3 @@ const ProductViewer = ({
     </ProductViewerWrapper>
   );
 };
-
-export default ProductViewer;

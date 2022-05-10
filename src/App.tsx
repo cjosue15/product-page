@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Product from './pages/Product';
+import ProductPage from './pages/Product/Product.page';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <Navbar />
       <main>
-        <Product />
+        <ProductPage />
       </main>
     </>
   );
